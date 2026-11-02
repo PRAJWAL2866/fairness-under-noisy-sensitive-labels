@@ -175,7 +175,7 @@ The notebook is submitted without executed outputs, in accordance with the initi
 
 **Team Members:**
 - Prajwal Phalke
-- [Second Team Member's Full Name]
+- Naveenkumar Pugazhendhi
 
 **Module:** AI, Power & Responsibility: Governing Intelligence
 
