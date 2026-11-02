@@ -1,14 +1,22 @@
 # Fairness Under Noisy Sensitive Labels
 
-Reproducible research on robust fair machine learning under asymmetric and group-dependent sensitive-attribute label noise.
+**Project 22 | Group 2 | Team Rookies**
+
+**Research Title:** Fairness under Noisy Sensitive Labels: Asymmetric Corruption of Recorded Sensitive Attributes and a Noise-Aware Model-Selection Safeguard
+
+**Repository:** [PRAJWAL2866/fairness-under-noisy-sensitive-labels](https://github.com/PRAJWAL2866/fairness-under-noisy-sensitive-labels)
+
+---
 
 ## 1. Project Overview
 
-This research investigates how inaccuracies in sensitive-attribute labels affect fairness evaluation and machine learning model selection.
+This research investigates how inaccuracies in recorded sensitive attributes affect fairness evaluation and machine learning model selection.
 
-In real-world machine learning applications, sensitive attributes such as gender may contain incorrect or inconsistent labels. Such inaccuracies can distort fairness measurements and lead to misleading conclusions about whether a model treats different demographic groups fairly.
+In real-world machine learning applications, sensitive attributes such as gender and demographic group membership may contain incorrect or inconsistent labels. These inaccuracies can distort fairness measurements and lead to misleading conclusions about whether a model treats different demographic groups fairly.
 
-The project aims to evaluate the impact of asymmetric and group-dependent sensitive-attribute label noise and investigate approaches for more reliable fairness-aware model selection.
+The project focuses on asymmetric and group-dependent sensitive-attribute label corruption. It examines how different corruption mechanisms affect fairness measurements, predictive performance, and fairness-aware model selection.
+
+The study also investigates a noise-aware model-selection safeguard designed to reduce the risk of selecting models that appear fair under corrupted validation labels but perform poorly when evaluated using clean reference labels.
 
 ## 2. Research Objectives
 
@@ -18,165 +26,300 @@ The main objectives are:
 - Evaluate the impact of different noise rates and corruption patterns.
 - Examine fairness and predictive utility trade-offs.
 - Identify misleading fairness assessments caused by corrupted sensitive labels.
-- Investigate noise-aware model selection strategies.
+- Investigate noise-aware model-selection strategies.
 - Compare experimental findings across multiple datasets.
 
 ## 3. Research Questions
 
-The study focuses on the following research questions:
+The study focuses on five research questions:
 
-1. How does asymmetric sensitive-attribute corruption affect the fairness–utility trade-off across fairness strategies?
-2. Can corrupted validation sensitive labels cause model selection to prefer a model that appears fair but is unfair under clean reference labels?
-3. Can a noise-aware selection safeguard improve worst-case clean-reference fairness subject to a utility threshold?
-4. How do corruption direction and rate, group prevalence, and target imbalance interact with fairness outcomes?
-5. Do the observed patterns generalize across the Adult Income and Default of Credit Card Clients datasets?
+**RQ1:** How does asymmetric sensitive-attribute corruption affect the fairness–utility trade-off across fairness strategies?
+
+**RQ2:** How does asymmetric corruption of validation sensitive labels influence fairness-based model selection and false-reassurance outcomes?
+
+**RQ3:** Can a noise-aware model-selection safeguard reduce selection errors and improve the reliability of fairness-aware model selection?
+
+**RQ4:** How do target-class imbalance and sensitive-attribute corruption interact when evaluating fairness and model-selection reliability?
+
+**RQ5:** How well do the observed effects and the proposed safeguard generalize across different datasets?
 
 ## 4. Datasets
 
-The research uses two publicly available datasets.
+Two benchmark datasets are used in this study.
 
-### Adult Income Dataset
+### 4.1 Default of Credit Card Clients
 
-- Source: UCI Machine Learning Repository
-- URL: https://archive.ics.uci.edu/dataset/2/adult
-- Prediction task: Income classification
-- Sensitive attribute: Sex
+- **Source:** UCI Machine Learning Repository
+- **Dataset:** Default of Credit Card Clients
+- **URL:** https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients
+- **Description:** Contains information about credit card clients, including demographic characteristics, credit history, payment information, and default payment status.
+- **Purpose:** Used to investigate the effects of sensitive-attribute corruption on fairness evaluation and model selection.
 
-### Default of Credit Card Clients Dataset
+### 4.2 Adult Dataset through Folktables
 
-- Source: UCI Machine Learning Repository
-- URL: https://archive.ics.uci.edu/dataset/350/default+credit+card+clients
-- Prediction task: Credit default prediction
-- Sensitive attribute: Sex
+- **Source:** Folktables GitHub Repository
+- **Repository:** https://github.com/socialfoundations/folktables
+- **Description:** Provides standardized datasets and prediction tasks based on the American Community Survey (ACS).
+- **Purpose:** Used to evaluate whether the experimental findings generalize across datasets.
 
-Both datasets are used to evaluate the impact of sensitive-attribute label corruption across different prediction tasks.
+**Dataset preparation:** The datasets will be inspected, cleaned, preprocessed, and transformed into suitable feature, target, and sensitive-attribute representations. Dataset versions, access procedures, and applicable usage or licensing conditions should be documented as part of the final experimental setup.
 
-## 5. Methodology
+## 5. Research Methodology
 
-The planned methodology includes:
+The experimental methodology consists of the following stages:
 
-1. Dataset loading and exploratory inspection.
-2. Data cleaning and preprocessing.
-3. Definition of target and sensitive attributes.
-4. Stratified training, validation, and test splitting.
-5. Controlled asymmetric sensitive-label corruption.
-6. Training baseline and fairness-aware machine learning models.
-7. Evaluation under different corruption rates.
-8. Comparison of fairness and predictive utility.
-9. Investigation of model-selection disagreement.
-10. Evaluation of a noise-aware model-selection safeguard.
-11. Cross-dataset comparison and robustness analysis.
+### Step 1: Dataset Loading and Exploration
 
-## 6. Experimental Setup
+- Load the selected datasets.
+- Inspect dataset structure, variables, and data types.
+- Identify missing values and inconsistent records.
+- Examine target and sensitive-attribute distributions.
 
-The initial experimental configuration includes:
+### Step 2: Data Preprocessing
 
-| Parameter | Setting |
-|---|---|
-| Random state | 42 |
-| Noise rates | 0%, 5%, 10%, 20%, 30% |
-| Random seeds | 11, 23, 37 |
-| Adult dataset sample limit | 18,000 |
-| Credit dataset sample limit | 12,000 |
-| Utility threshold | 0.55 |
+- Handle missing values.
+- Encode categorical variables.
+- Prepare feature variables, target labels, and sensitive attributes.
+- Establish training, validation, and test splits.
 
-These are preliminary experimental settings and may be adjusted during the research.
+### Step 3: Baseline Model Training
 
-## 7. Machine Learning Models
+Train baseline machine learning models, including Logistic Regression, to establish reference predictive performance.
 
-The planned experiments include:
+### Step 4: Fairness-Aware Strategies
 
-- Logistic Regression (baseline).
-- Inverse-group-frequency reweighting.
-- Exponentiated Gradient fairness constraints using Fairlearn, where supported.
+Compare different fairness approaches:
 
-## 8. Evaluation Metrics
+- Baseline classification.
+- Reweighting.
+- Fairlearn Exponentiated Gradient with Demographic Parity constraints.
+- Fairlearn Exponentiated Gradient with Equalized Odds constraints.
+- Threshold-based post-processing.
+
+### Step 5: Sensitive-Attribute Corruption
+
+Introduce controlled corruption into recorded sensitive attributes.
+
+The study considers four corruption mechanisms:
+
+1. **Symmetric corruption:** Both sensitive groups have equal corruption probabilities.
+2. **Minority-to-majority corruption:** Sensitive labels from the minority group are changed to the majority group.
+3. **Majority-to-minority corruption:** Sensitive labels from the majority group are changed to the minority group.
+4. **Class-dependent corruption:** Corruption probabilities depend on the target class.
+
+Different corruption rates will be evaluated to understand their effects on fairness measurements and model selection.
+
+### Step 6: Noise-Aware Model Selection
+
+Evaluate how corrupted validation sensitive labels influence fairness-based model selection.
+
+The proposed safeguard will be investigated to reduce unreliable selection decisions and false-reassurance outcomes.
+
+### Step 7: Evaluation and Robustness Analysis
+
+- Compare predictive performance and fairness metrics.
+- Measure model-selection reliability.
+- Perform sensitivity and robustness analyses.
+- Compare results across different datasets.
+- Repeat experiments using multiple random seeds.
+
+**Experimental protocol:** Training and validation sensitive labels are corrupted independently. Test sensitive labels remain clean to provide a reference for evaluating the effects of corruption.
+
+The pilot experiments use three random seeds. The final experimental study is planned to use at least 20 random seeds.
+
+## 6. Evaluation Metrics
+
+The following metrics are used to evaluate predictive performance, fairness, and model-selection reliability.
 
 ### Predictive Performance
 
 - Accuracy
 - Balanced Accuracy
 
-### Fairness Evaluation
+### Fairness Metrics
 
 - Demographic Parity Difference
 - Equal Opportunity Difference
 - Equalized Odds Difference
 
-### Additional Analysis
+### Model-Selection Reliability
 
-- False-reassurance rate.
-- Model-selection disagreement.
-- Fairness degradation under different noise rates.
-- Bootstrap confidence intervals.
-- Cross-dataset robustness.
+- False-Reassurance Rate
+- Oracle Disagreement
+- Regret
+- Robustness Ratio
 
-## 9. Expected Research Contributions
+These metrics help determine whether corrupted sensitive labels lead to misleading fairness assessments and whether the proposed safeguard improves model-selection reliability.
 
-The research aims to:
+## 7. Expected Results and Research Contributions
 
-- Demonstrate the effect of noisy sensitive attributes on fairness evaluation.
-- Analyze the relationship between label corruption and fairness–utility trade-offs.
-- Identify situations where corrupted validation labels produce misleading model-selection decisions.
-- Investigate a noise-aware model-selection safeguard.
-- Provide comparative evidence across two real-world datasets.
+The study is designed to produce publication-oriented figures and tables addressing all five research questions.
 
-These are intended contributions and will be evaluated through experiments.
+The planned analyses include:
 
-## 10. Dependencies
+- Comparisons of fairness measurements under different sensitive-label corruption mechanisms.
+- Analysis of asymmetric corruption and fairness–utility trade-offs.
+- Evaluation of false-reassurance rates and model-selection errors.
+- Comparison of model-selection strategies with and without the proposed safeguard.
+- Analysis of interactions between target-class imbalance and sensitive-label corruption.
+- Cross-dataset comparisons of fairness and predictive performance.
 
-The project uses Python and the following libraries:
+The expected contribution is an empirical investigation of how unreliable sensitive-attribute labels affect fairness-aware model selection, together with an evaluation of a noise-aware safeguard.
 
-- NumPy
-- Pandas
-- Matplotlib
-- Scikit-learn
-- Fairlearn
-- OpenPyXL
-- xlrd
-- Jupyter Notebook
+**Note:** Expected or illustrative values are not experimental findings. Final conclusions will be based on actual executed experiments and statistical analysis.
 
-Install dependencies using:
+## 8. Repository Structure
+
+```text
+fairness-under-noisy-sensitive-labels/
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── notebooks/
+│   └── Project22_Fairness_Noisy_Sensitive_Labels_Kaggle.ipynb
+│
+├── results/
+│   ├── figures/
+│   └── tables/
+│
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
+
+### Directory Description
+
+| Directory/File | Description |
+|---|---|
+| `data/raw/` | Original downloaded datasets |
+| `data/processed/` | Cleaned and preprocessed datasets |
+| `notebooks/` | Research implementation and experiments |
+| `results/figures/` | Generated plots and visualizations |
+| `results/tables/` | Experimental result tables |
+| `.gitignore` | Files and directories excluded from Git |
+| `requirements.txt` | Python dependencies |
+| `README.md` | Project documentation |
+
+The structure represents the intended organization of the research implementation. Directories can be added as the experiments progress.
+
+## 9. Installation and Requirements
+
+### Prerequisites
+
+- Python 3.10 or later
+- Jupyter Notebook or JupyterLab
+- Git
+- Internet connection for dataset retrieval
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/PRAJWAL2866/fairness-under-noisy-sensitive-labels.git
+
+cd fairness-under-noisy-sensitive-labels
+```
+
+### Create a Virtual Environment
+
+**Windows PowerShell:**
+
+```powershell
+python -m venv .venv
+
+.venv\Scripts\Activate.ps1
+```
+
+**Linux/macOS:**
+
+```bash
+python -m venv .venv
+
+source .venv/bin/activate
+```
+
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 11. Dataset Access and Execution
+The dependency file should include the packages required by the final notebook implementation, including the relevant versions of:
 
-1. Download the datasets from the official UCI Machine Learning Repository links.
-2. Prepare the downloaded files according to the notebook's expected filenames.
-3. Place the datasets in the existing raw-data location or configure the notebook paths accordingly.
-4. Install the required dependencies.
-5. Open the Jupyter Notebook.
-6. Execute the notebook cells sequentially when conducting the actual experiments.
+- NumPy
+- Pandas
+- Scikit-learn
+- Fairlearn
+- SciPy
+- Matplotlib
+- Seaborn
+- Jupyter
+- Folktables, if used for dataset retrieval
 
-## 12. Reproducibility and Research Integrity
+The final `requirements.txt` should be checked against the notebook imports before running the experiments.
 
-- Fixed random seeds are used for reproducibility.
-- Original recorded sensitive attributes are preserved as experimental reference labels.
-- Artificial corruption is introduced separately from the original labels.
-- Final test evaluation uses clean reference labels.
-- Experimental findings will only be reported after actual execution and validation.
-- No fabricated results are included.
-- Recorded sensitive attributes are treated as experimental reference labels rather than unquestionable ground truth.
+## 10. Running the Notebook
 
-## 13. Current Implementation Status
+Follow these steps to execute the experiments:
 
-This repository contains the initial research implementation and supporting dataset resources.
+1. Clone the GitHub repository.
+2. Create and activate a Python virtual environment.
+3. Install the required dependencies.
+4. Download or retrieve the datasets from their official sources.
+5. Configure the dataset paths in the notebook.
+6. Start Jupyter Notebook:
 
-The submitted initial implementation is intended to demonstrate the planned methodology and experimental feasibility.
+```bash
+jupyter notebook
+```
 
-The notebook is submitted without executed outputs, in accordance with the initial project proposal submission requirements.
+7. Open the `notebooks/` directory.
+8. Open `Project22_Fairness_Noisy_Sensitive_Labels_Kaggle.ipynb`.
+9. Execute the notebook cells sequentially.
+10. Review the generated figures, tables, fairness metrics, and experimental comparisons.
 
-## 14. Authors
+For the final study, use at least 20 random seeds. The three-seed configuration is intended for pilot experimentation only.
 
-**Project:** Fairness Under Noisy Sensitive Labels
+## 11. Reproducibility
+
+The following practices will be used to support reproducibility:
+
+- Fixed random seeds for controlled experiments.
+- Documented corruption mechanisms and corruption rates.
+- Independent corruption of training and validation sensitive labels.
+- Clean test sensitive labels for reference evaluation.
+- Consistent evaluation metrics across comparable experiments.
+- Recorded package versions and experimental configurations.
+- At least 20 random seeds for the final experimental study.
+
+## 12. Project Team
+
+**Team Name:** Rookies
+
+**Group Number:** 2
 
 **Team Members:**
-- Prajwal Phalke
-- Naveenkumar Pugazhendhi
 
-**Module:** AI, Power & Responsibility: Governing Intelligence
+1. Prajwal Dattatray Phalke
+2. Naveenkumar Pugazhendhi
 
-**Institution:** University of Europe for Applied Sciences
+## 13. Research Discussion and Documentation
+
+The research planning, methodology discussion, and project development conversation can be accessed through the following shared ChatGPT link:
+
+**[Open Project 22 – Research Discussion](https://chatgpt.com/share/6ae8e543-eccc-83ed-8c5f-23699041ea15)**
+
+## 14. Project Status
+
+This repository is dedicated to Project 22: Fairness under Noisy Sensitive Labels.
+
+It contains the research documentation and implementation framework for investigating fairness evaluation under asymmetric and group-dependent sensitive-attribute corruption.
+
+The final results, figures, tables, and conclusions will be updated as the experiments are implemented and completed.
+
+---
+
+**Project 22 | Group 2 | Team Rookies**
+
+*Fairness under Noisy Sensitive Labels*
