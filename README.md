@@ -2,9 +2,12 @@
 
 **Project 22 | Group 2 | Team Rookies**
 
-**Research Title:** Fairness under Noisy Sensitive Labels: Asymmetric Corruption of Recorded Sensitive Attributes and a Noise-Aware Model-Selection Safeguard
+**Research Title:**  
+Fairness under Noisy Sensitive Labels: Asymmetric Corruption of Recorded Sensitive Attributes and a Noise-Aware Model-Selection Safeguard
 
 **Repository:** [PRAJWAL2866/fairness-under-noisy-sensitive-labels](https://github.com/PRAJWAL2866/fairness-under-noisy-sensitive-labels)
+
+**Target Journal:** Data Mining and Knowledge Discovery (Springer Nature)
 
 ---
 
@@ -43,35 +46,53 @@ The study focuses on five research questions:
 
 **RQ5:** How well do the observed effects and the proposed safeguard generalize across different datasets?
 
-## 4. Datasets
+## 4. Target Journal
+
+**Journal:** Data Mining and Knowledge Discovery  
+**Publisher:** Springer Nature  
+**Journal website:** https://link.springer.com/journal/10618
+
+The research is being developed with this journal as its intended publication target. The experimental methodology, reproducibility, statistical evaluation and presentation of findings will be assessed against the expectations of the selected journal.
+
+## 5. Anchor Research Paper
+
+**Small et al. (2025)**
+
+DOI: https://doi.org/10.1007/s10618-025-01112-8
+
+This paper serves as the anchor reference for the research direction and motivates the investigation of fairness and robustness under sensitive-attribute label noise.
+
+## 6. Datasets
 
 Two benchmark datasets are used in this study.
 
-### 4.1 Default of Credit Card Clients
+### 6.1 Default of Credit Card Clients
 
 - **Source:** UCI Machine Learning Repository
 - **Dataset:** Default of Credit Card Clients
 - **URL:** https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients
-- **Description:** Contains information about credit card clients, including demographic characteristics, credit history, payment information, and default payment status.
+- **Description:** Contains information about credit card clients, including demographic characteristics, credit history, payment information and default payment status.
+- **Sensitive attribute:** Sex.
 - **Purpose:** Used to investigate the effects of sensitive-attribute corruption on fairness evaluation and model selection.
 
-### 4.2 Adult Dataset through Folktables
+### 6.2 Adult Dataset through Folktables
 
 - **Source:** Folktables GitHub Repository
 - **Repository:** https://github.com/socialfoundations/folktables
 - **Description:** Provides standardized datasets and prediction tasks based on the American Community Survey (ACS).
+- **Sensitive attribute:** Gender.
 - **Purpose:** Used to evaluate whether the experimental findings generalize across datasets.
 
-**Dataset preparation:** The datasets will be inspected, cleaned, preprocessed, and transformed into suitable feature, target, and sensitive-attribute representations. Dataset versions, access procedures, and applicable usage or licensing conditions should be documented as part of the final experimental setup.
+**Dataset preparation:** The datasets are inspected, cleaned, preprocessed and transformed into suitable feature, target and sensitive-attribute representations. Dataset versions, access procedures and applicable usage or licensing conditions should be documented as part of the final experimental setup.
 
-## 5. Research Methodology
+## 7. Research Methodology
 
-The experimental methodology consists of the following stages:
+The experimental methodology consists of the following stages.
 
 ### Step 1: Dataset Loading and Exploration
 
 - Load the selected datasets.
-- Inspect dataset structure, variables, and data types.
+- Inspect dataset structure, variables and data types.
 - Identify missing values and inconsistent records.
 - Examine target and sensitive-attribute distributions.
 
@@ -79,8 +100,8 @@ The experimental methodology consists of the following stages:
 
 - Handle missing values.
 - Encode categorical variables.
-- Prepare feature variables, target labels, and sensitive attributes.
-- Establish training, validation, and test splits.
+- Prepare feature variables, target labels and sensitive attributes.
+- Establish training, validation and test splits.
 
 ### Step 3: Baseline Model Training
 
@@ -107,13 +128,13 @@ The study considers four corruption mechanisms:
 3. **Majority-to-minority corruption:** Sensitive labels from the majority group are changed to the minority group.
 4. **Class-dependent corruption:** Corruption probabilities depend on the target class.
 
-Different corruption rates will be evaluated to understand their effects on fairness measurements and model selection.
+Different corruption rates are evaluated to understand their effects on fairness measurements and model selection.
 
 ### Step 6: Noise-Aware Model Selection
 
 Evaluate how corrupted validation sensitive labels influence fairness-based model selection.
 
-The proposed safeguard will be investigated to reduce unreliable selection decisions and false-reassurance outcomes.
+The proposed safeguard is investigated to reduce unreliable selection decisions and false-reassurance outcomes.
 
 ### Step 7: Evaluation and Robustness Analysis
 
@@ -125,11 +146,11 @@ The proposed safeguard will be investigated to reduce unreliable selection decis
 
 **Experimental protocol:** Training and validation sensitive labels are corrupted independently. Test sensitive labels remain clean to provide a reference for evaluating the effects of corruption.
 
-The pilot experiments use three random seeds. The final experimental study is planned to use at least 20 random seeds.
+The research design distinguishes pilot experimentation from the planned final experimental study. The number of seeds, dataset sizes and experimental conditions used in each reported run are documented with the corresponding results.
 
-## 6. Evaluation Metrics
+## 8. Evaluation Metrics
 
-The following metrics are used to evaluate predictive performance, fairness, and model-selection reliability.
+The following metrics are used to evaluate predictive performance, fairness and model-selection reliability.
 
 ### Predictive Performance
 
@@ -151,9 +172,9 @@ The following metrics are used to evaluate predictive performance, fairness, and
 
 These metrics help determine whether corrupted sensitive labels lead to misleading fairness assessments and whether the proposed safeguard improves model-selection reliability.
 
-## 7. Expected Results and Research Contributions
+## 9. Expected Research Contributions
 
-The study is designed to produce publication-oriented figures and tables addressing all five research questions.
+The study is designed to produce research figures and tables addressing all five research questions.
 
 The planned analyses include:
 
@@ -166,9 +187,11 @@ The planned analyses include:
 
 The expected contribution is an empirical investigation of how unreliable sensitive-attribute labels affect fairness-aware model selection, together with an evaluation of a noise-aware safeguard.
 
-**Note:** Expected or illustrative values are not experimental findings. Final conclusions will be based on actual executed experiments and statistical analysis.
+**Note:** Expected or illustrative values are not experimental findings. Final conclusions must be based on actual executed experiments and appropriate statistical analysis.
 
-## 8. Repository Structure
+## 10. Repository Structure
+
+The repository is organised to separate research documentation, notebooks, experimental results, datasets and supporting files.
 
 ```text
 fairness-under-noisy-sensitive-labels/
@@ -178,16 +201,24 @@ fairness-under-noisy-sensitive-labels/
 │   └── processed/
 │
 ├── notebooks/
-│   └── Project22_Fairness_Noisy_Sensitive_Labels_Kaggle.ipynb
+│   └── final-notebook 22.ipynb
 │
 ├── results/
+│   ├── Project22_results_pilot.zip
 │   ├── figures/
 │   └── tables/
 │
+├── proposal/
+│   └── Project22_Final_Proposal.pdf
+│
+├── documentation/
+│   └── target_journal.txt
+│
 ├── .gitignore
-├── README.md
-└── requirements.txt
+└── README.md
 ```
+
+*The structure above describes the intended submission layout. Files and directories should be added as they are uploaded to the repository.*
 
 ### Directory Description
 
@@ -196,15 +227,15 @@ fairness-under-noisy-sensitive-labels/
 | `data/raw/` | Original downloaded datasets |
 | `data/processed/` | Cleaned and preprocessed datasets |
 | `notebooks/` | Research implementation and experiments |
-| `results/figures/` | Generated plots and visualizations |
+| `results/` | Experimental result archive |
+| `results/figures/` | Generated plots and visualisations |
 | `results/tables/` | Experimental result tables |
+| `proposal/` | Final research proposal |
+| `documentation/` | Target journal and supporting documentation |
 | `.gitignore` | Files and directories excluded from Git |
-| `requirements.txt` | Python dependencies |
 | `README.md` | Project documentation |
 
-The structure represents the intended organization of the research implementation. Directories can be added as the experiments progress.
-
-## 9. Installation and Requirements
+## 11. Installation and Requirements
 
 ### Prerequisites
 
@@ -259,7 +290,7 @@ The dependency file should include the packages required by the final notebook i
 
 The final `requirements.txt` should be checked against the notebook imports before running the experiments.
 
-## 10. Running the Notebook
+## 12. Running the Notebook
 
 Follow these steps to execute the experiments:
 
@@ -275,15 +306,15 @@ jupyter notebook
 ```
 
 7. Open the `notebooks/` directory.
-8. Open `Project22_Fairness_Noisy_Sensitive_Labels_Kaggle.ipynb`.
+8. Open `final-notebook 22.ipynb`.
 9. Execute the notebook cells sequentially.
-10. Review the generated figures, tables, fairness metrics, and experimental comparisons.
+10. Review the generated figures, tables, fairness metrics and experimental comparisons.
 
-For the final study, use at least 20 random seeds. The three-seed configuration is intended for pilot experimentation only.
+Use the experimental configuration documented with each run when reproducing the results. Pilot configurations and final-study configurations must not be treated as interchangeable.
 
-## 11. Reproducibility
+## 13. Reproducibility
 
-The following practices will be used to support reproducibility:
+The following practices support reproducibility:
 
 - Fixed random seeds for controlled experiments.
 - Documented corruption mechanisms and corruption rates.
@@ -291,9 +322,40 @@ The following practices will be used to support reproducibility:
 - Clean test sensitive labels for reference evaluation.
 - Consistent evaluation metrics across comparable experiments.
 - Recorded package versions and experimental configurations.
-- At least 20 random seeds for the final experimental study.
+- Explicit documentation of dataset sizes, experimental conditions and completed runs.
+- Exported experimental tables and figures.
 
-## 12. Project Team
+The final research report should identify the exact configuration used to generate every reported result.
+
+## 14. Project Deliverables
+
+The following deliverables are maintained for research review and reproducibility.
+
+### Research Notebook
+
+The executed notebook containing the research implementation, experimental workflow, analyses and outputs.
+
+### Experimental Results
+
+The ZIP archive containing exported experimental results, including result tables and figures.
+
+### Research Proposal
+
+The finalized research proposal defining the research problem, objectives, research questions and methodology.
+
+### Target Journal
+
+**Data Mining and Knowledge Discovery — Springer Nature**
+
+### GitHub Repository
+
+https://github.com/PRAJWAL2866/fairness-under-noisy-sensitive-labels
+
+### Zenodo Archive
+
+The Zenodo DOI and archive link will be added after the final repository release has been archived successfully.
+
+## 15. Project Team
 
 **Team Name:** Rookies
 
@@ -304,19 +366,21 @@ The following practices will be used to support reproducibility:
 1. Prajwal Dattatray Phalke
 2. Naveenkumar Pugazhendhi
 
-## 13. Research Discussion and Documentation
+## 16. Research Discussion and Documentation
 
-The research planning, methodology discussion, and project development conversation can be accessed through the following shared ChatGPT link:
+The research planning, methodology discussion and project development conversation can be accessed through the following shared ChatGPT link:
 
 **[Open Project 22 – Research Discussion](https://chatgpt.com/share/6ae8e543-eccc-83ed-8c5f-23699041ea15)**
 
-## 14. Project Status
+## 17. Project Status
 
 This repository is dedicated to Project 22: Fairness under Noisy Sensitive Labels.
 
 It contains the research documentation and implementation framework for investigating fairness evaluation under asymmetric and group-dependent sensitive-attribute corruption.
 
-The final results, figures, tables, and conclusions will be updated as the experiments are implemented and completed.
+The executed notebook and exported results provide the basis for reviewing the experimental implementation. Before the work is described as publication-ready, the final experimental configuration, metadata, statistical analyses, methodological limitations and clean-kernel reproducibility must be verified.
+
+The research findings and conclusions will be finalised based on the validated experimental results.
 
 ---
 
