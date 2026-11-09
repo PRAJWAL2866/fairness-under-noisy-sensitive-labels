@@ -5,7 +5,11 @@
 **Research Title:**  
 Fairness under Noisy Sensitive Labels: Asymmetric Corruption of Recorded Sensitive Attributes and a Noise-Aware Model-Selection Safeguard
 
-**Repository:** [PRAJWAL2866/fairness-under-noisy-sensitive-labels](https://github.com/PRAJWAL2866/fairness-under-noisy-sensitive-labels)
+**GitHub Repository:**  
+https://github.com/PRAJWAL2866/fairness-under-noisy-sensitive-labels
+
+**Zenodo Archive:**  
+https://doi.org/10.5281/zenodo.24090705
 
 **Target Journal:** Data Mining and Knowledge Discovery (Springer Nature)
 
@@ -34,8 +38,6 @@ The main objectives are:
 
 ## 3. Research Questions
 
-The study focuses on five research questions:
-
 **RQ1:** How does asymmetric sensitive-attribute corruption affect the fairness–utility trade-off across fairness strategies?
 
 **RQ2:** How does asymmetric corruption of validation sensitive labels influence fairness-based model selection and false-reassurance outcomes?
@@ -48,9 +50,9 @@ The study focuses on five research questions:
 
 ## 4. Target Journal
 
-**Journal:** Data Mining and Knowledge Discovery  
-**Publisher:** Springer Nature  
-**Journal website:** https://link.springer.com/journal/10618
+- **Journal:** Data Mining and Knowledge Discovery
+- **Publisher:** Springer Nature
+- **Journal website:** https://link.springer.com/journal/10618
 
 The research is being developed with this journal as its intended publication target. The experimental methodology, reproducibility, statistical evaluation and presentation of findings will be assessed against the expectations of the selected journal.
 
@@ -71,19 +73,18 @@ Two benchmark datasets are used in this study.
 - **Source:** UCI Machine Learning Repository
 - **Dataset:** Default of Credit Card Clients
 - **URL:** https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients
-- **Description:** Contains information about credit card clients, including demographic characteristics, credit history, payment information and default payment status.
-- **Sensitive attribute:** Sex.
-- **Purpose:** Used to investigate the effects of sensitive-attribute corruption on fairness evaluation and model selection.
+- **Sensitive attribute:** Sex
+- **Purpose:** Investigate the effects of sensitive-attribute corruption on fairness evaluation and model selection.
 
 ### 6.2 Adult Dataset through Folktables
 
 - **Source:** Folktables GitHub Repository
 - **Repository:** https://github.com/socialfoundations/folktables
-- **Description:** Provides standardized datasets and prediction tasks based on the American Community Survey (ACS).
-- **Sensitive attribute:** Gender.
-- **Purpose:** Used to evaluate whether the experimental findings generalize across datasets.
+- **Description:** Standardized datasets and prediction tasks based on the American Community Survey (ACS).
+- **Sensitive attribute:** Gender
+- **Purpose:** Evaluate whether experimental findings generalize across datasets.
 
-**Dataset preparation:** The datasets are inspected, cleaned, preprocessed and transformed into suitable feature, target and sensitive-attribute representations. Dataset versions, access procedures and applicable usage or licensing conditions should be documented as part of the final experimental setup.
+Dataset versions, access procedures, preprocessing and applicable usage or licensing conditions should be documented as part of the final experimental setup.
 
 ## 7. Research Methodology
 
@@ -150,8 +151,6 @@ The research design distinguishes pilot experimentation from the planned final e
 
 ## 8. Evaluation Metrics
 
-The following metrics are used to evaluate predictive performance, fairness and model-selection reliability.
-
 ### Predictive Performance
 
 - Accuracy
@@ -191,8 +190,6 @@ The expected contribution is an empirical investigation of how unreliable sensit
 
 ## 10. Repository Structure
 
-The repository is organised to separate research documentation, notebooks, experimental results, datasets and supporting files.
-
 ```text
 fairness-under-noisy-sensitive-labels/
 │
@@ -218,22 +215,7 @@ fairness-under-noisy-sensitive-labels/
 └── README.md
 ```
 
-*The structure above describes the intended submission layout. Files and directories should be added as they are uploaded to the repository.*
-
-### Directory Description
-
-| Directory/File | Description |
-|---|---|
-| `data/raw/` | Original downloaded datasets |
-| `data/processed/` | Cleaned and preprocessed datasets |
-| `notebooks/` | Research implementation and experiments |
-| `results/` | Experimental result archive |
-| `results/figures/` | Generated plots and visualisations |
-| `results/tables/` | Experimental result tables |
-| `proposal/` | Final research proposal |
-| `documentation/` | Target journal and supporting documentation |
-| `.gitignore` | Files and directories excluded from Git |
-| `README.md` | Project documentation |
+*The structure above describes the intended submission layout. Ensure the corresponding files are uploaded before treating the repository as complete.*
 
 ## 11. Installation and Requirements
 
@@ -276,7 +258,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-The dependency file should include the packages required by the final notebook implementation, including the relevant versions of:
+The dependency file should include the packages required by the final notebook implementation, including relevant versions of:
 
 - NumPy
 - Pandas
@@ -291,8 +273,6 @@ The dependency file should include the packages required by the final notebook i
 The final `requirements.txt` should be checked against the notebook imports before running the experiments.
 
 ## 12. Running the Notebook
-
-Follow these steps to execute the experiments:
 
 1. Clone the GitHub repository.
 2. Create and activate a Python virtual environment.
@@ -327,9 +307,25 @@ The following practices support reproducibility:
 
 The final research report should identify the exact configuration used to generate every reported result.
 
-## 14. Project Deliverables
+## 14. Project Deliverables and Publication Links
 
-The following deliverables are maintained for research review and reproducibility.
+### GitHub Repository
+
+Complete research repository and source documentation:
+
+https://github.com/PRAJWAL2866/fairness-under-noisy-sensitive-labels
+
+### Zenodo Archive
+
+**Published release:** Project 22 – Research Submission  
+**Version:** v1.0.0  
+**Publication date:** November 9, 2026
+
+**Permanent DOI:** 10.5281/zenodo.24090705
+
+**DOI link:** https://doi.org/10.5281/zenodo.24090705
+
+The Zenodo record provides a persistent reference to the archived GitHub release.
 
 ### Research Notebook
 
@@ -343,17 +339,13 @@ The ZIP archive containing exported experimental results, including result table
 
 The finalized research proposal defining the research problem, objectives, research questions and methodology.
 
-### Target Journal
+### Target Journal Text File
 
-**Data Mining and Knowledge Discovery — Springer Nature**
+`target_journal.txt`
 
-### GitHub Repository
+Content:
 
-https://github.com/PRAJWAL2866/fairness-under-noisy-sensitive-labels
-
-### Zenodo Archive
-
-The Zenodo DOI and archive link will be added after the final repository release has been archived successfully.
+Data Mining and Knowledge Discovery
 
 ## 15. Project Team
 
@@ -364,7 +356,7 @@ The Zenodo DOI and archive link will be added after the final repository release
 **Team Members:**
 
 1. Prajwal Dattatray Phalke
-2. Naveenkumar Pugazhendhi
+2. Naveenkumar Pugazhendi
 
 ## 16. Research Discussion and Documentation
 
@@ -376,7 +368,7 @@ The research planning, methodology discussion and project development conversati
 
 This repository is dedicated to Project 22: Fairness under Noisy Sensitive Labels.
 
-It contains the research documentation and implementation framework for investigating fairness evaluation under asymmetric and group-dependent sensitive-attribute corruption.
+The GitHub repository has been created and a release has been archived on Zenodo under DOI `10.5281/zenodo.24090705`.
 
 The executed notebook and exported results provide the basis for reviewing the experimental implementation. Before the work is described as publication-ready, the final experimental configuration, metadata, statistical analyses, methodological limitations and clean-kernel reproducibility must be verified.
 
